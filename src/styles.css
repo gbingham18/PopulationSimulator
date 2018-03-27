@@ -1,17 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
-
+/* Global CSS for background and fonts for h1 and p  */
 html{
-    background-color:lightblue;
-    color:white;
+    background-color:white;
+    color:black;
 }
 
 h1{
     font-size: 5em;
     margin:0;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /*font-family:'Gotham Narrow A', 'Gotham Narrow B', Helvetica, Arial, sans-serif;*/
+    font-family: "Arial Black", Gadget, sans-serif;
 }
 
 p{
     font-size: 1.5em;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Gotham Narrow A', 'Gotham Narrow B', Helvetica, Arial, sans-serif;
+}
+
+/* Code which makes it responsive when used on a mobile device. It changes the font size for the header 
+    based off of the size of the screen */
+@media screen and (max-width: 440px){
+    h1{
+        font-size:4em;
+    }
+}
+
+@media screen and (max-width: 350px){
+    h1{
+        font-size:3em;
+    }
 }

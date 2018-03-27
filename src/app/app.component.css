@@ -1,4 +1,10 @@
 .titleheader{
     color: white;
     padding-top:0%;
+    text-align: center;
+    background-color:#c22033
+}
+
+.titledescription{
+    text-align: center;
 }

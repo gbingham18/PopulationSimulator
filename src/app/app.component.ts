@@ -7,7 +7,7 @@ import {Img}  from 'react-image'
 })
 export class AppComponent {
   title = 'Population Simulator';
-  projDesc = 'Here is an describtion about how the population simulations on this website will work.'
+  projDesc = 'Here is an description about how the population simulations on this website will work.'
 }
 
 

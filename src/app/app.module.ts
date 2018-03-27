@@ -3,13 +3,15 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { NewCmpComponent } from './new-cmp/new-cmp.component';
+import { GraphsComponent } from './graphs/graphs.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewCmpComponent
+    GraphsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule
