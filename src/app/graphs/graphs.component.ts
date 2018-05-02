@@ -16,7 +16,8 @@ export class GraphsComponent implements OnInit {
   }
 
   options;
-  data;
+  data1;
+  data2;
   ngOnInit() {
     this.graphSection = 'Graph Component Section';
     this.options = {
@@ -45,7 +46,8 @@ export class GraphsComponent implements OnInit {
         }
       }
     }
-    this.data = [
+    
+    this.data1 = [
       {
         key: "Cumulative Return",
         values: [
@@ -80,6 +82,47 @@ export class GraphsComponent implements OnInit {
           {
             "label" : "H" ,
             "value" : -5.1387322875705
+          }
+        ]
+      }
+    ];
+
+
+    this.data2 = [
+      {
+        key: "Cumulative Return",
+        values: [
+          {
+            "label" : "1" ,
+            "value" : 1
+          } ,
+          {
+            "label" : "2" ,
+            "value" : 5
+          } ,
+          {
+            "label" : "3" ,
+            "value" : 15
+          } ,
+          {
+            "label" : "4" ,
+            "value" : 20
+          } ,
+          {
+            "label" : "5" ,
+            "value" : 40
+          } ,
+          {
+            "label" : "6" ,
+            "value" : 50
+          } ,
+          {
+            "label" : "7" ,
+            "value" : 60
+          } ,
+          {
+            "label" : "8" ,
+            "value" : 100
           }
         ]
       }
