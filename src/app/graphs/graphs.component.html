@@ -30,8 +30,12 @@
   </tr>
 
   <tr style="text-align: center">
-    <td class="leftGraph" id="leftGraph"> Left Graph</td>
-    <td class="rightGraph" id="rightGraph"> Right Graph</td>
+    <td class="leftGraph" id="leftGraph">
+       <div><nvd3 [options]="options" [data]="data"></nvd3></div>
+    </td>
+    <td class="rightGraph" id="rightGraph">
+       <div><nvd3 [options]="options" [data]="data"></nvd3></div>
+    </td>
   </tr>
 </table>
 
