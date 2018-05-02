@@ -2,9 +2,13 @@
     color: white;
     padding-top:0%;
     text-align: center;
-    background-color:#c22033
+    background-color:#c22033;
+    left: 0;
+    right: 0;
+    top: 0;
 }
 
 .titledescription{
     text-align: center;
+
 }

@@ -1,7 +1,37 @@
-<div class="graphs">
-  <p>
-    {{graphSection}}
-  </p>
-  <div><nvd3 [options]="options" [data]="data"></nvd3></div>
-</div>
+
+ <!-- <div><nvd3 [options]="options" [data]="data"></nvd3></div>-->
+<button id="runSimBtn">Go</button>
+<p id="sliderDesc">Use Sliders or text boxes to select values for each factor</p>
+
+<table style="width:100%">
+  <tr>
+    <th class="leftGraph">
+        <input id="LfitAA" type="range" text="Fitness AA"/> 
+        <input id ="LfitAa" type="range"/>
+        <input id="Lfitaa" type="range"/>
+        <input id="LAtoaMut" type="range"/>
+      <!--  <input it="LatoAMut" type="range"/>
+        <input id="LAlleFreq" type="range"/>
+        <input id ="LpopSize" type="range"/>
+        <input id="LGenNum" type="range"/>-->
+    </th>
+    <th class="rightGraph"> 
+        <input id="RfitAA" type="range" text="Fitness AA"/> 
+        <input id ="RfitAa" type="range"/>
+        <input id="Rfitaa" type="range"/>
+        <input id="RAtoaMut" type="range"/>
+      <!--  <input it="RatoAMut" type="range"/>
+        <input id="RAlleFreq" type="range"/>
+        <input id ="RpopSize" type="range"/>
+        <input id="RGenNum" type="range"/>-->
+      
+    </th>
+
+  </tr>
+
+  <tr style="text-align: center">
+    <td class="leftGraph" id="leftGraph"> Left Graph</td>
+    <td class="rightGraph" id="rightGraph"> Right Graph</td>
+  </tr>
+</table>
 

@@ -4,3 +4,51 @@
     background-color: red;
     text-align: center;
 }*/
+#runSimBtn{
+    width:200px;
+    height:40px;
+    background-color:gray;
+    border-color:black;
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+    margin-bottom:1%;
+}
+#sliderDesc{
+    text-align: center;
+    font-size: 1em;
+}
+
+table{
+    border-collapse: collapse;
+}
+.leftGraph{
+    background-color:red;
+    height:200px;
+    width:50%;
+}
+
+.rightGraph{
+    background-color:blue;
+    height:200px;
+    width:50%;
+}
+
+#leftGraph{
+    height:300px;
+    background-color:rgb(240, 234, 234);
+}
+
+#rightGraph{
+    height: 300px;
+    background-color:rgb(226, 222, 222);
+}
+
+
+input[type="range"] {
+    top: 65%;
+    transform: rotate(270deg);
+    margin-right:2px;
+    margin-left:2px;
+ }
+

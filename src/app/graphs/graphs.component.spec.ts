@@ -23,3 +23,5 @@ describe('GraphsComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+

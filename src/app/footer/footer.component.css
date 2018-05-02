@@ -1,11 +1,12 @@
 footer{
-    position:flex;
-    bottom:0;
     background-color:black;
     width:100%;
-    padding:1% 0 1% 0;
+    padding:10px 0 10px 0;
     text-align: center;
     margin-top:5%;
+    bottom:0;
+    left:0;
+    right:0;
 }
 
 footer p{
