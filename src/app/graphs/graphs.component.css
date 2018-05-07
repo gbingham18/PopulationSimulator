@@ -22,33 +22,63 @@
 table{
     border-collapse: collapse;
 }
-.leftGraph{
+.GraphFilter{
     background-color:red;
     height:200px;
-    width:50%;
+    width:100%;
+}
+.GraphFilter td
+{
+    text-align: center;
+    margin: 0px 0px 0px 0px;
+} 
+.GraphFilter input[type=text]
+{
+    width:30px;
+}
+.GraphFilter p{
+    font-size: .5em;
+    text-align: center;
 }
 
-.rightGraph{
-    background-color:blue;
+.Graphs{
     height:200px;
-    width:50%;
+    width:100%;
+    margin-bottom:10px;
+}
+.leftGraph{
+    background-color: lightblue;
+}
+.rightGraph{
+    background-color: lightgreen;
 }
 
 #leftGraph{
-    height:300px;
-    background-color:rgb(240, 234, 234);
+    height:200px;
 }
 
 #rightGraph{
     height: 300px;
-    background-color:rgb(226, 222, 222);
 }
 
 
 input[type="range"] {
-    top: 65%;
-    transform: rotate(270deg);
-    margin-right:2px;
-    margin-left:2px;
+    top: 75%;
+    padding-right:0px;
+    padding-left:0px;
  }
 
+ .slider-wrapper {
+    display: inline-block;
+    width: 20px;
+    height: 150px;
+    padding: 0;
+  }
+
+  .slider-wrapper input {
+    width: 150px;
+    height: 20px;
+    margin: 0;
+    transform-origin: 75px 75px;
+    transform: rotate(-90deg);
+  }
