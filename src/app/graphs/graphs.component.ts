@@ -15,6 +15,7 @@ export class GraphsComponent implements OnInit {
 
   }
 
+ 
   options;
   data1;
   data2;
@@ -127,6 +128,12 @@ export class GraphsComponent implements OnInit {
         ]
       }
     ];
+
+    function sliderChange(val) {
+      document.getElementById("LfitAAtext").innerHTML = val;
+  }
+   // document.getElementById("LfitAAtext").innerHTML = (<HTMLInputElement>document.getElementById("LfitAA")).value;
+
   }
 
 }
