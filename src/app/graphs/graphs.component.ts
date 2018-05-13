@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+//import {MatSliderModule} from '@angular/material/slider';
 declare let d3: any;
 
 @Component({
@@ -9,17 +10,14 @@ declare let d3: any;
 export class GraphsComponent implements OnInit {
   graphSection:string;
 
-  
-  constructor()
-  {
-
-  }
-
+  constructor(){}
  
   options;
   data1;
   data2;
   ngOnInit() {
+
+
     this.graphSection = 'Graph Component Section';
     this.options = {
       chart: {
@@ -129,10 +127,10 @@ export class GraphsComponent implements OnInit {
       }
     ];
 
-    function sliderChange(val) {
-      document.getElementById("LfitAAtext").innerHTML = val;
-  }
+ 
    // document.getElementById("LfitAAtext").innerHTML = (<HTMLInputElement>document.getElementById("LfitAA")).value;
+
+
 
   }
 

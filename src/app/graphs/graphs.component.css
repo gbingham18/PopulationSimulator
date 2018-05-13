@@ -2,12 +2,15 @@
 #runSimBtn{
     width:200px;
     height:40px;
-    background-color:gray;
-    border-color:black;
+    background-color: white;
+    border: 2px solid black;
     margin-left: auto;
     margin-right: auto;
     display:block;
     margin-bottom:1%;
+}
+#runSimBtn:hover, #enlargeLG:hover, #enlargeRG:hover{
+    background-color:lightgray;
 }
 #sliderDesc{
     text-align: center;
@@ -18,9 +21,11 @@ table{
     border-collapse: collapse;
 }
 .GraphFilter{
-    background-color:red;
+    background-color:#c22033;
     height:200px;
-    width:100%;
+    width:90%;
+    margin-left:5%;
+    margin-right:5%;
 }
 .GraphFilter td
 {
@@ -36,28 +41,35 @@ table{
     text-align: center;
 }
 
+.sliderdivider{
+    background-color: #f2f2f2;
+    width:6.7%;
+}
+
 .Graphs{
     height:200px;
     width:100%;
     margin-bottom:15%;
 }
 .leftGraph{
-    background-color: lightblue;
+    background-color: #c22033;
 }
 .rightGraph{
-    background-color: lightgreen;
+    background-color: #c22033;
 }
 
 #leftGraph{
     height:200px;
-    width:49.6%; 
+    width:42%; 
     float:left;
+    margin-left:5%;
 }
 
 #rightGraph{
     height: 300px;
-    width:50%; 
+    width:42%; 
     float:right;
+    margin-right:5%;
 }
 
 
@@ -82,6 +94,24 @@ input[type="range"] {
     transform: rotate(-90deg);
   }
 
+  /*Zoom into graphs buttons*/
+  #enlargeLG{
+    float:left;
+    margin-left: 5%;
+    width: 150px;
+    height: 25px;
+    background-color: white;
+    border: 2px solid black;
+  }
+
+  #enlargeRG{
+    float:right;
+    margin-right: 5%;
+    width: 150px;
+    height: 25px;
+    background-color: white;
+    border: 2px solid black;
+  }
 
   /*Responsive*/
 @media screen and (max-width: 1250px){
@@ -89,12 +119,29 @@ input[type="range"] {
           margin-bottom:17%;
       }
   }
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1025px){
+
+    .Graphs{
+        margin-bottom:30%;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .Graphs{
+        margin-bottom:35%;
+    }
     .rightGraph{
         display:none;
     }
     #rightGraph{
         display:none;
+    }
+
+    #enlargeRG{
+        display:none;
+    }
+    #enlargeLG{
+        margin-left:45%;
     }
     .GraphFilter{
         width:80%;
@@ -112,14 +159,9 @@ input[type="range"] {
         margin-left: 10%;
         margin-right: 10%;
     }
-    .Graphs{
-        margin-bottom:30%;
-    }
-}
-
-@media screen and (max-width: 900px){
-    .Graphs{
-        margin-bottom:35%;
+    .sliderdivider{
+        width:0px;
+        background-color: lightblue;
     }
 }
 
