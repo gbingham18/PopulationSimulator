@@ -165,7 +165,7 @@ input[type="range"] {
         display:none;
     }
     #enlargeLG{
-        margin-left:45%;
+        display:none;
     }
     .GraphFilter{
         width:80%;
