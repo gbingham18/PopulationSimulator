@@ -7,7 +7,15 @@ declare let d3: any;
   templateUrl: './graphs.component.html',
   styleUrls: ['./graphs.component.css']
 })
+
+
 export class GraphsComponent implements OnInit {
+
+  msg = "";
+  onCLick(){
+    this.msg = "Clicked the Enlarge Left Graph Button";
+  }
+
   graphSection:string;
 
   constructor(){}
