@@ -1,6 +1,225 @@
-/*.graphs{
-    width:100%;
-    height: 600px;
-    background-color: red;
+
+#runSimBtn{
+    width:200px;
+    height:40px;
+    background-color: white;
+    border: 2px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+    margin-bottom:1%;
+}
+#runSimBtn:hover, #enlargeLG:hover, #enlargeRG:hover{
+    background-color:lightgray;
+}
+#sliderDesc{
     text-align: center;
-}*/
+    font-size: 1em;
+}
+
+table{
+    border-collapse: collapse;
+}
+.GraphFilter{
+    background-color:#c22033;
+    height:200px;
+    width:90%;
+    margin-left:5%;
+    margin-right:5%;
+}
+.GraphFilter td
+{
+    text-align: center;
+    margin: 0px 0px 0px 0px;
+} 
+.GraphFilter input[type=text]
+{
+    width:30px;
+}
+.GraphFilter p{
+    font-size: .5em;
+    text-align: center;
+}
+
+.sliderdivider{
+    background-color: #f2f2f2;
+    width:6.7%;
+}
+
+.Graphs{
+    height:200px;
+    width:100%;
+    margin-bottom:15%;
+}
+.leftGraph{
+    background-color: #c22033;
+}
+.rightGraph{
+    background-color: #c22033;
+}
+
+#leftGraph{
+    height:200px;
+    width:42%; 
+    float:left;
+    margin-left:5%;
+}
+
+#rightGraph{
+    height: 300px;
+    width:42%; 
+    float:right;
+    margin-right:5%;
+}
+
+
+input[type="range"] {
+    top: 75%;
+    padding-right:0px;
+    padding-left:0px;
+ }
+
+ .slider-wrapper {
+    display: inline-block;
+    width: 20px;
+    height: 150px;
+    padding: 0;
+  }
+
+  .slider-wrapper input {
+    width: 150px;
+    height: 20px;
+    margin: 0;
+    transform-origin: 75px 75px;
+    transform: rotate(-90deg);
+  }
+
+  /*Zoom into graphs buttons*/
+  #enlargeLG{
+    float:left;
+    margin-left: 5%;
+    width: 150px;
+    height: 25px;
+    background-color: white;
+    border: 2px solid black;
+  }
+
+  #enlargeRG{
+    float:right;
+    margin-right: 5%;
+    width: 150px;
+    height: 25px;
+    background-color: white;
+    border: 2px solid black;
+  }
+
+  #overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+
+#text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
+  /*Responsive*/
+@media screen and (max-width: 1250px){
+      .Graphs{
+          margin-bottom:17%;
+      }
+  }
+@media screen and (max-width: 1025px){
+
+    .Graphs{
+        margin-bottom:30%;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .Graphs{
+        margin-bottom:35%;
+    }
+    .rightGraph{
+        display:none;
+    }
+    #rightGraph{
+        display:none;
+    }
+
+    #enlargeRG{
+        display:none;
+    }
+    #enlargeLG{
+        display:none;
+    }
+    .GraphFilter{
+        width:80%;
+        margin-left:10%;
+        margin-right:10%;
+    }
+
+    .leftGraph{
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    
+    #leftGraph{
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .sliderdivider{
+        width:0px;
+        background-color: lightblue;
+    }
+}
+
+@media screen and (max-width: 750px){
+    .Graphs{
+        margin-bottom:40%;
+    }
+}
+
+@media screen and (max-width: 650px){
+    .Graphs{
+        margin-bottom:45%;
+    }
+}
+
+@media screen and (max-width: 570px){
+    .Graphs{
+        margin-bottom:55%;
+    }
+}
+@media screen and (max-width: 470px){
+    .Graphs{
+        margin-bottom:65%;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .Graphs{
+        margin-bottom:75%;
+    }
+}
+
+@media screen and (max-width: 350px){
+    .Graphs{
+        margin-bottom:85%;
+    }
+}

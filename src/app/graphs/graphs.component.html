@@ -1,7 +1,139 @@
-<div class="graphs">
-  <p>
-    {{graphSection}}
-  </p>
-  <div><nvd3 [options]="options" [data]="data"></nvd3></div>
-</div>
+<!--Slider TickMarks-->
+<datalist id="tickmarks">
+    <option value="0.00">
+    <option value="0.10">
+    <option value="0.20">
+    <option value="0.30">
+    <option value="0.40">
+    <option value="0.50">
+    <option value="0.60">
+    <option value="0.70">
+    <option value="0.80">
+    <option value="0.90">
+    <option value="1.00">
+  </datalist>
+
+  <datalist id="muttickmarks">
+      <option value="0.000000001">
+      <option value="0.00000001">
+      <option value="0.0000001">
+      <option value="0.000001">
+      <option value="0.00001">
+      <option value="0.0001">
+      <option value="0.001">
+      <option value="0.01">
+  </datalist>
+
+  <datalist id="poptickmarks">
+      <option value="10">
+      <option value="500">
+      <option value="1000">
+      <option value="1500">
+      <option value="2000">
+      <option value="2500">
+      <option value="3000">
+      <option value="3500">
+      <option value="4000">
+      <option value="4500">
+      <option value="5000">
+  </datalist>
+
+  <datalist id="gentickmarks">
+      <option value="100">
+      <option value="200">
+      <option value="300">
+      <option value="400">
+      <option value="500">
+      <option value="600">
+      <option value="700">
+      <option value="800">
+      <option value="900">
+      <option value="1000">
+  </datalist>
+
+<button id="runSimBtn">Go</button>
+<p id="sliderDesc">Use Sliders or text boxes to select values for each factor</p>
+<button id="enlargeLG"  (click)="onClick()">Enlarge Left Graph</button>
+<button id="enlargeRG" >Enlarge Right Graph</button>
+
+<table class="GraphFilter">
+  <tr>
+    <!--Left Graph Sliders-->
+    <td class="leftGraph"><div class="slider-wrapper"><input id="LfitAA" type="range" min="0" max="1" step="any" list="tickmarks" oninput="sliderChange(this.value)"/></div></td>
+    <td class="leftGraph"><div class="slider-wrapper"><input id="LfitAa" type="range" min="0" max="1" step="any" list="tickmarks"/></div></td>
+    <td class="leftGraph"><div class="slider-wrapper"><input id="Lfitaa" type="range" min="0" max="1" step="any" list="tickmarks"/></div></td> 
+    <td class="leftGraph"><div class="slider-wrapper"><input id ="LAtoaMut" type="range" min="0.000000001" max="0.01" step="any"/></div></td>
+    <td class="leftGraph"><div class="slider-wrapper"><input id="LatoAMut" type="range"  min="0.000000001" max="0.01" step="any"/></div></td>
+    <td class="leftGraph"><div class="slider-wrapper"><input id="LAlleFreq" type="range" min="0" max="1" step="any" list="tickmarks"/></div></td>
+    <td class="leftGraph"><div class="slider-wrapper"><input id ="LpopSize" type="range" min="10" max="5000" step="any" list="poptickmarks"/></div></td> 
+    <td class="leftGraph"><div class="slider-wrapper"><input id="LGenNum" type="range" min="100" max="1000" step="any" list="gentickmarks"/></div></td>
+    <td class="sliderdivider"><div></div></td>
+        <!--Right Graph Sliders-->
+    <td class="rightGraph"><div class="slider-wrapper"><input id="RfitAA" type="range" min="0" max="1" step="any" list="tickmarks"/></div></td>
+    <td class="rightGraph"><div class="slider-wrapper"><input id="RfitAa" type="range" min="0" max="1" step="any" list="tickmarks"/></div></td>
+    <td class="rightGraph"><div class="slider-wrapper"><input id="Rfitaa" type="range" min="0" max="1" step="any" list="tickmarks"/></div></td> 
+    <td class="rightGraph"><div class="slider-wrapper"><input id ="RAtoaMut" type="range" min="0.000000001" max="0.01" step="any" /></div></td>
+    <td class="rightGraph"><div class="slider-wrapper"><input id="RatoAMut" type="range"  min="0.000000001" max="0.01" step="any" /></div></td>
+    <td class="rightGraph"><div class="slider-wrapper"><input id="RAlleFreq" type="range" min="0" max="1" step="any" list="tickmarks"/></div></td>
+    <td class="rightGraph"><div class="slider-wrapper"><input id ="RpopSize" type="range" min="10" max="5000" step="any" list="poptickmarks"/></div></td> 
+    <td class="rightGraph"><div class="slider-wrapper"><input id="RGenNum" type="range" min="100" max="1000" step="any" list="gentickmarks"/></div></td>
+  </tr>
+
+  <tr>
+    <!--Left Graph Desc.-->
+    <td class="leftGraph"><p>Fitness AA</p></td>
+    <td class="leftGraph"><p>Fitness Aa</p></td>
+    <td class="leftGraph"><p>Fitness aa</p></td>
+    <td class="leftGraph"><p>A to a Mtn. Rate</p></td>
+    <td class="leftGraph"><p>a to A Mtn. Rate</p></td>
+    <td class="leftGraph"><p>Int. Allele Freq.</p></td>
+    <td class="leftGraph"><p>Pop. Size</p></td>
+    <td class="leftGraph"><p>Generations</p></td>
+    <td class="sliderdivider"><div></div></td>
+        <!--Right Graph Desc.-->
+    <td class="rightGraph"><p>Fitness AA</p></td>
+    <td class="rightGraph"><p>Fitness Aa</p></td>
+    <td class="rightGraph"><p>Fitness aa</p></td>
+    <td class="rightGraph"><p>A to a Mtn. Rate</p></td>
+    <td class="rightGraph"><p>a to A Mtn. Rate</p></td>
+    <td class="rightGraph"><p>Int. Allele Freq.</p></td>
+    <td class="rightGraph"><p>Pop. Size</p></td>
+    <td class="rightGraph"><p>Generations</p></td>
+  </tr>
+
+  <tr>
+      <!--Left Graph Text boxes-->
+      <td class="leftGraph"><input type="text" id="LfitAAtext"/></td>
+      <td class="leftGraph"><input type ="text" id="LfitAatext"/></td>
+      <td class="leftGraph"><input type="text" id="Lfitaatext"/></td>
+      <td class="leftGraph"><input type="text" id="LAtoaMuttext" /></td>
+      <td class="leftGraph"><input type="text" id="LatoAMuttext"  /></td>
+      <td class="leftGraph"><input type="text" id="LAlleFreqtext" /></td>
+      <td class="leftGraph"><input type="text" id="LpopSizetext" /></td>
+      <td class="leftGraph"><input type="text" id="LGenNumtext" /></td>
+
+      <td class="sliderdivider"><div></div></td>
+     <!--Right Graph Text boxes-->
+      <td class="rightGraph"><input type="text" id="RfitAAtext" /></td>
+      <td class="rightGraph"><input type ="text" id="RfitAatext" /></td>
+      <td class="rightGraph"><input type="text" id="Rfitaatext" /></td>
+      <td class="rightGraph"><input type="text" id="RAtoaMuttext" /></td>
+      <td class="rightGraph"><input type="text" id="RatoAMuttext" /></td>
+      <td class="rightGraph"><input type="text" id="RAlleFreqtext" /></td>
+      <td class="rightGraph"><input type="text" id="RpopSizetext" /></td>
+      <td class="rightGraph"><input type="text" id="RGenNumtext" /></td>
+    </tr>
+</table>
+
+<table style="width:100%" class="Graphs">
+    <tr style="text-align: center">
+        <td  id="leftGraph">
+            <div style="background-color:#c22033; opacity:.9"><nvd3 [options]="options" [data]="data1"></nvd3></div>
+        </td>
+
+      <td id="rightGraph">
+          <div style="background-color: #c22033; opacity:.9"><nvd3 [options]="options" [data]="data2"></nvd3></div>
+      </td>
+    </tr>
+</table>
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+//import {MatSliderModule} from '@angular/material/slider';
 declare let d3: any;
 
 @Component({
@@ -6,18 +7,25 @@ declare let d3: any;
   templateUrl: './graphs.component.html',
   styleUrls: ['./graphs.component.css']
 })
+
+
 export class GraphsComponent implements OnInit {
-  graphSection:string;
 
-  
-  constructor()
-  {
-
+  msg = "";
+  onCLick(){
+    this.msg = "Clicked the Enlarge Left Graph Button";
   }
 
+  graphSection:string;
+
+  constructor(){}
+ 
   options;
-  data;
+  data1;
+  data2;
   ngOnInit() {
+
+
     this.graphSection = 'Graph Component Section';
     this.options = {
       chart: {
@@ -45,7 +53,8 @@ export class GraphsComponent implements OnInit {
         }
       }
     }
-    this.data = [
+    
+    this.data1 = [
       {
         key: "Cumulative Return",
         values: [
@@ -84,6 +93,53 @@ export class GraphsComponent implements OnInit {
         ]
       }
     ];
+
+
+    this.data2 = [
+      {
+        key: "Cumulative Return",
+        values: [
+          {
+            "label" : "1" ,
+            "value" : 1
+          } ,
+          {
+            "label" : "2" ,
+            "value" : 5
+          } ,
+          {
+            "label" : "3" ,
+            "value" : 15
+          } ,
+          {
+            "label" : "4" ,
+            "value" : 20
+          } ,
+          {
+            "label" : "5" ,
+            "value" : 40
+          } ,
+          {
+            "label" : "6" ,
+            "value" : 50
+          } ,
+          {
+            "label" : "7" ,
+            "value" : 60
+          } ,
+          {
+            "label" : "8" ,
+            "value" : 100
+          }
+        ]
+      }
+    ];
+
+ 
+   // document.getElementById("LfitAAtext").innerHTML = (<HTMLInputElement>document.getElementById("LfitAA")).value;
+
+
+
   }
 
 }

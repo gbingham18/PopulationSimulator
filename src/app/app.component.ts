@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Population Simulator';
-  projDesc = 'Here is an description about how the population simulations on this website will work.'
+  projDesc = 'In biology, specifically genetics, it is important to know not only what will influence the genetic frequencies in a population, but also how these frequencies change over many generations. Below are graphs that simulate genetic frequencies across generations.'
 
 
 }
