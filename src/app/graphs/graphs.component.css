@@ -1,20 +1,41 @@
 
-#runSimBtn{
+#runLeftSimBtn{
     width:200px;
     height:40px;
     background-color: white;
     border: 2px solid black;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 5%;
     display:block;
     margin-bottom:1%;
+    float:left;
 }
-#runSimBtn:hover, #enlargeLG:hover, #enlargeRG:hover{
-    background-color:lightgray;
+
+#runRightSimBtn
+{
+    width:200px;
+    height:40px;
+    background-color: white;
+    border: 2px solid black;
+    margin-right: 5%;
+    display:block;
+    margin-bottom:1%;
+    float:right;
+}
+
+#Simbuttons{
+    top:25%;
+    margin-top:5%;
+}
+
+
+#runRightSimBtn:hover, #runLeftSimBtn:hover{
+    background-color:#c22033;
+    color:white;
 }
 #sliderDesc{
     text-align: center;
-    font-size: 1em;
+    font-size: 1.15em;
+    font-weight:bold;
 }
 
 table{
@@ -34,7 +55,7 @@ table{
 } 
 .GraphFilter input[type=text]
 {
-    width:30px;
+    width:50px;
 }
 .GraphFilter p{
     font-size: .5em;
@@ -53,6 +74,9 @@ table{
 }
 .leftGraph{
     background-color: #c22033;
+}
+.leftGraph p{
+    font-size:.5em;
 }
 .rightGraph{
     background-color: #c22033;
@@ -113,29 +137,24 @@ input[type="range"] {
     border: 2px solid black;
   }
 
-  #overlay {
-    position: fixed;
-    display: none;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 2;
-    cursor: pointer;
+.sliderLabels{
+    color:white;
 }
 
-#text{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 50px;
-    color: white;
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
+.leftGraph p{
+    font-size: 15px;
+    height: 35px;
 }
+
+.rightGraph p{
+    font-size:15px;
+    height:35px;
+}
+
+.leftGraph td{
+    width:100px;
+}
+
 
   /*Responsive*/
 @media screen and (max-width: 1250px){
@@ -143,14 +162,11 @@ input[type="range"] {
           margin-bottom:17%;
       }
   }
-@media screen and (max-width: 1025px){
 
-    .Graphs{
-        margin-bottom:30%;
+@media screen and (max-width: 1140px){
+    .leftGraph p, .rightGraph p{
+        font-size:11px;
     }
-}
-
-@media screen and (max-width: 900px){
     .Graphs{
         margin-bottom:35%;
     }
@@ -162,6 +178,9 @@ input[type="range"] {
     }
 
     #enlargeRG{
+        display:none;
+    }
+    #runRightSimBtn{
         display:none;
     }
     #enlargeLG{
@@ -187,11 +206,47 @@ input[type="range"] {
         width:0px;
         background-color: lightblue;
     }
+    
+    #runLeftSimBtn{
+        width:200px;
+        height:40px;
+        background-color: white;
+        border: 2px solid black;
+        margin-left: auto;
+        margin-right: auto;
+        display:block;
+        margin-bottom:1%;
+        float:none;
+    }
 }
+
+@media screen and (max-width: 1080px){
+    .leftGraph p, .rightGraph p{
+        font-size:9px;
+    }
+}
+
+@media screen and (max-width: 1140px){
+    .leftGraph p, .rightGraph p{
+        font-size:12px;
+    }
+}
+
+@media screen and (max-width: 1025px){
+
+    .Graphs{
+        margin-bottom:30%;
+    }
+}
+
+
 
 @media screen and (max-width: 750px){
     .Graphs{
         margin-bottom:40%;
+    }
+    #simBtnTable{
+        margin-left:35%;
     }
 }
 
@@ -205,6 +260,16 @@ input[type="range"] {
     .Graphs{
         margin-bottom:55%;
     }
+    #simBtnTable{
+        margin-left:32%;
+    }
+}
+
+@media screen and(max-width: 560px)
+{
+    width:100%;
+    min-width:100px;
+    width:auto;
 }
 @media screen and (max-width: 470px){
     .Graphs{
@@ -222,4 +287,24 @@ input[type="range"] {
     .Graphs{
         margin-bottom:85%;
     }
+
+    .GraphFilter{
+        margin-left:0%;
+        margin-right:0%;
+    }
+    .GraphFilter input[type=text]
+    {
+        width:28px;
+    }
+
+    .leftGraph p{
+        font-size: 10px;
+    }
+
+    #leftGraph{
+        margin-left:0%;
+        margin-right:0%;
+        width:100%;
+    }
+
 }

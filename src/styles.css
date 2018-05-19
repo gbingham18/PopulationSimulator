@@ -14,18 +14,35 @@ html, body{
     background-color: #f2f2f2;
 }
 h1{
-    font-size: 5em;
+    font-size: 7em;
     margin:0;
     font-family: "Arial Black", Gadget, sans-serif;
 }
 
 p{
     font-size: 1.5em;
-    font-family: 'Gotham Narrow A', 'Gotham Narrow B', Helvetica, Arial, sans-serif;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 /* Code which makes it responsive when used on a mobile device. It changes the font size for the header 
     based off of the size of the screen */
+@media screen and (max-width: 1300px)
+{
+    h1{
+        font-size: 6em;
+    }
+}
+
+@media screen and (max-width: 1150px)
+{
+    h1{
+        font-size: 5em;
+    }
+
+}
+
+
+
 @media screen and (max-width: 440px){
     h1{
         font-size:4em;

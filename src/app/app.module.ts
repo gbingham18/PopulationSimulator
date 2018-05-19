@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {NvD3Module} from 'ng2-nvd3';
+import { HttpClientModule } from '@angular/common/http';
 
 import 'd3';
 import 'nvd3';
@@ -17,7 +18,8 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    NvD3Module
+    NvD3Module, 
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

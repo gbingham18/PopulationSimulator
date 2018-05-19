@@ -10,5 +10,15 @@
 
 .titledescription{
     text-align: center;
+    margin-left:5%;
+    margin-right:5%;
+    margin-top:2%;
+}
 
+@media screen and (max-width:1140px)
+{
+    .titledescription{
+        margin-left:10%;
+        margin-right:10%;
+    }
 }
