@@ -2,8 +2,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { promise } from 'protractor';
 //import {MatSliderModule} from '@angular/material/slider';
-declare let d3: any;
+//declare let d3: any;
 
 @Component({
   selector: 'app-graphs',
@@ -15,6 +16,7 @@ declare let d3: any;
 export class GraphsComponent {
 
   constructor(private http: HttpClient){}
+
   serverDataL1;
   serverDataL2;
   serverDataL3;
@@ -23,6 +25,8 @@ export class GraphsComponent {
   serverDataR2;
   serverDataR3;
   serverDataR4;
+  PrevLGenLength;
+  PrevRGenLength;
   graphSection:string;
   optionsL;
   optionsR;
@@ -90,7 +94,6 @@ export class GraphsComponent {
     var LGenNumtext = document.getElementById('LGenNumtext');
     var LGenNumslider = document.getElementById('LGenNum');
     (<HTMLInputElement>LGenNumtext).value = (<HTMLInputElement>LGenNumslider).value;
-   // console.log(LGenNumtext.value);
   }
 
   RfitsliderChange(event)
@@ -262,164 +265,140 @@ export class GraphsComponent {
   }
 
   getLeftData(event){
-
-    this.http.post('http://flask-env1.bm5nceqahy.us-west-2.elasticbeanstalk.com',
-    {
-      "p": (<HTMLInputElement>document.getElementById('LAlleFreq')).value,
-     // "q": 1 - document.getElementById('LAlleFreq').value,
-      "numGens": (<HTMLInputElement>document.getElementById('LGenNum')).value,
-      "popSize": (<HTMLInputElement>document.getElementById('LpopSize')).value,
-      "fitA1": (<HTMLInputElement>document.getElementById('LfitAA')).value,
-      "fitA2": (<HTMLInputElement>document.getElementById('LfitAa')).value,
-      "fitA3": (<HTMLInputElement>document.getElementById('Lfitaa')).value,
-      "mutAa": 0,
-      "mutaA": 0
+    console.log(d3);
+    let p = new Promise((resolve, reject) => {
+      this.http.post('http://popsimbackend2.us-west-2.elasticbeanstalk.com/',
+      {
+        "p": (<HTMLInputElement>document.getElementById('LAlleFreq')).value,
+        "numGens": (<HTMLInputElement>document.getElementById('LGenNum')).value,
+        "popSize": (<HTMLInputElement>document.getElementById('LpopSize')).value,
+        "fitA1": (<HTMLInputElement>document.getElementById('LfitAA')).value,
+        "fitA2": (<HTMLInputElement>document.getElementById('LfitAa')).value,
+        "fitA3": (<HTMLInputElement>document.getElementById('Lfitaa')).value,
+        "mutAa": 0,
+        "mutaA": 0
       }
-  ).subscribe(data => {
-    
-    this.serverDataL1 = data;
-    console.log(data);
-  });
+      ).toPromise()
+      .then(
+        res => {
+          this.serverDataL1 = Object(res)["data"];
+          resolve();
+        }
+      )
+      return p;
+    })
 
-  this.http.post('http://flask-env1.bm5nceqahy.us-west-2.elasticbeanstalk.com',
-  {
-    "p": (<HTMLInputElement>document.getElementById('LAlleFreq')).value,
-    //"q": 1 - document.getElementById('LAlleFreq').value,
-    "numGens": (<HTMLInputElement>document.getElementById('LGenNum')).value,
-    "popSize": (<HTMLInputElement>document.getElementById('LpopSize')).value,
-    "fitA1": (<HTMLInputElement>document.getElementById('LfitAA')).value,
-    "fitA2": (<HTMLInputElement>document.getElementById('LfitAa')).value,
-    "fitA3": (<HTMLInputElement>document.getElementById('Lfitaa')).value,
-    "mutAa": 0,
-    "mutaA": 0
-    }
-  ).subscribe(data => {
-  
-  this.serverDataL2 = data;
-  console.log(data);
-  });
-
-  this.http.post('http://flask-env1.bm5nceqahy.us-west-2.elasticbeanstalk.com',
-  {
-    "p": (<HTMLInputElement>document.getElementById('LAlleFreq')).value,
-   // "q": 1 - document.getElementById('LAlleFreq').value,
-    "numGens": (<HTMLInputElement>document.getElementById('LGenNum')).value,
-    "popSize": (<HTMLInputElement>document.getElementById('LpopSize')).value,
-    "fitA1": (<HTMLInputElement>document.getElementById('LfitAA')).value,
-    "fitA2": (<HTMLInputElement>document.getElementById('LfitAa')).value,
-    "fitA3": (<HTMLInputElement>document.getElementById('Lfitaa')).value,
-    "mutAa": 0,
-    "mutaA": 0
-    }
-).subscribe(data => {
-  
-  this.serverDataL3 = data;
-  console.log(data);
-});
-
-this.http.post('http://flask-env1.bm5nceqahy.us-west-2.elasticbeanstalk.com',
-{
-  "p": (<HTMLInputElement>document.getElementById('LAlleFreq')).value,
-  //"q": 1 - document.getElementById('LAlleFreq').value,
-  "numGens": (<HTMLInputElement>document.getElementById('LGenNum')).value,
-  "popSize": (<HTMLInputElement>document.getElementById('LpopSize')).value,
-  "fitA1": (<HTMLInputElement>document.getElementById('LfitAA')).value,
-  "fitA2": (<HTMLInputElement>document.getElementById('LfitAa')).value,
-  "fitA3": (<HTMLInputElement>document.getElementById('Lfitaa')).value,
-  "mutAa": 0,
-  "mutaA": 0
-  }
-).subscribe(data => {
-
-this.serverDataL4 = data;
-console.log(data);
-});
-
-  this.dataL = [
-    {
-      key : '1',
-      values: this.serverDataL1,
-      color: "blue"
-    },
-    {
-      key: '2',
-      values: this.serverDataL2,
-      color: "green"
-    },
-    {
-      key: '3',
-      values: this.serverDataL3,
-      color:'orange'
-    },
-    {
-      key: '4',
-      values: this.serverDataL4,
-      color:'red'
-    }
-  ]
-
-}
-
-  getRightData(event){
-    
-        this.http.post('http://flask-env1.bm5nceqahy.us-west-2.elasticbeanstalk.com',
+    p.then(() => {
+      let p2 = new Promise((resolve, reject) => {
+        this.http.post('http://popsimbackend2.us-west-2.elasticbeanstalk.com/',
         {
-          "p": (<HTMLInputElement>document.getElementById('RAlleFreq')).value,
-      //    "q": 1 - document.getElementById('RAlleFreq').value,
-          "numGens": (<HTMLInputElement>document.getElementById('RGenNum')).value,
-          "popSize": (<HTMLInputElement>document.getElementById('RpopSize')).value,
-          "fitA1": (<HTMLInputElement>document.getElementById('RfitAA')).value,
-          "fitA2": (<HTMLInputElement>document.getElementById('RfitAa')).value,
-          "fitA3": (<HTMLInputElement>document.getElementById('Rfitaa')).value,
+          "p": (<HTMLInputElement>document.getElementById('LAlleFreq')).value,
+          "numGens": (<HTMLInputElement>document.getElementById('LGenNum')).value,
+          "popSize": (<HTMLInputElement>document.getElementById('LpopSize')).value,
+          "fitA1": (<HTMLInputElement>document.getElementById('LfitAA')).value,
+          "fitA2": (<HTMLInputElement>document.getElementById('LfitAa')).value,
+          "fitA3": (<HTMLInputElement>document.getElementById('Lfitaa')).value,
           "mutAa": 0,
           "mutaA": 0
+        }
+        ).toPromise()
+        .then(
+          res => {
+            this.serverDataL2 = Object(res)["data"];
+            resolve();
           }
-      ).subscribe(data => {
-        
-        this.serverDataR1 = data;
-        console.log(data);
-      });
-    
-      this.http.post('http://flask-env1.bm5nceqahy.us-west-2.elasticbeanstalk.com',
-      {
-        "p": (<HTMLInputElement>document.getElementById('RAlleFreq')).value,
-      //  "q": 1 - document.getElementById('RAlleFreq').value,
-        "numGens": (<HTMLInputElement>document.getElementById('RGenNum')).value,
-        "popSize": (<HTMLInputElement>document.getElementById('RpopSize')).value,
-        "fitA1": (<HTMLInputElement>document.getElementById('RfitAA')).value,
-        "fitA2": (<HTMLInputElement>document.getElementById('RfitAa')).value,
-        "fitA3": (<HTMLInputElement>document.getElementById('Rfitaa')).value,
-        "mutAa": 0,
-        "mutaA": 0
-        }
-      ).subscribe(data => {
-      
-      this.serverDataR2 = data;
-      console.log(data);
-      });
-    
-      this.http.post('http://flask-env1.bm5nceqahy.us-west-2.elasticbeanstalk.com',
-      {
-        "p": (<HTMLInputElement>document.getElementById('RAlleFreq')).value,
-      //  "q": 1 - document.getElementById('RAlleFreq').value,
-        "numGens": (<HTMLInputElement>document.getElementById('RGenNum')).value,
-        "popSize": (<HTMLInputElement>document.getElementById('RpopSize')).value,
-        "fitA1": (<HTMLInputElement>document.getElementById('RfitAA')).value,
-        "fitA2": (<HTMLInputElement>document.getElementById('RfitAa')).value,
-        "fitA3": (<HTMLInputElement>document.getElementById('Rfitaa')).value,
-        "mutAa": 0,
-        "mutaA": 0
-        }
-    ).subscribe(data => {
-      
-      this.serverDataR3 = data;
-      console.log(data);
-    });
-    
-    this.http.post('http://flask-env1.bm5nceqahy.us-west-2.elasticbeanstalk.com',
+        )
+        return p2;
+      })
+
+      p2.then(() => {
+        let p3 = new Promise((resolve, reject) => {
+          this.http.post('http://popsimbackend2.us-west-2.elasticbeanstalk.com/',
+          {
+            "p": (<HTMLInputElement>document.getElementById('LAlleFreq')).value,
+            "numGens": (<HTMLInputElement>document.getElementById('LGenNum')).value,
+            "popSize": (<HTMLInputElement>document.getElementById('LpopSize')).value,
+            "fitA1": (<HTMLInputElement>document.getElementById('LfitAA')).value,
+            "fitA2": (<HTMLInputElement>document.getElementById('LfitAa')).value,
+            "fitA3": (<HTMLInputElement>document.getElementById('Lfitaa')).value,
+            "mutAa": 0,
+            "mutaA": 0
+          }
+          ).toPromise()
+          .then(
+            res => {
+              this.serverDataL3 = Object(res)["data"];
+              resolve();
+            }
+          )
+          return p3;
+        })
+
+        p3.then(() => {
+          let p4 = new Promise((resolve, reject) => {
+            this.http.post('http://popsimbackend2.us-west-2.elasticbeanstalk.com/',
+            {
+              "p": (<HTMLInputElement>document.getElementById('LAlleFreq')).value,
+              "numGens": (<HTMLInputElement>document.getElementById('LGenNum')).value,
+              "popSize": (<HTMLInputElement>document.getElementById('LpopSize')).value,
+              "fitA1": (<HTMLInputElement>document.getElementById('LfitAA')).value,
+              "fitA2": (<HTMLInputElement>document.getElementById('LfitAa')).value,
+              "fitA3": (<HTMLInputElement>document.getElementById('Lfitaa')).value,
+              "mutAa": 0,
+              "mutaA": 0
+            }
+            ).toPromise()
+            .then(
+              res => {
+                this.serverDataL4 = Object(res)["data"];
+                resolve();
+              }
+            )
+            return p4;
+          })
+
+          p4.then(() => {
+            if (this.PrevLGenLength != this.serverDataL1.length) {
+              this.optionsL.chart.duration = 0;
+              this.optionsL.chart.xDomain = [0, this.serverDataL1.length.toString()];
+              this.PrevLGenLength = this.serverDataL1.length;
+            }
+            else {
+              this.optionsL.chart.duration = 500;
+            }
+            this.dataL = [
+              {
+                key : '1',
+                values: this.serverDataL1,
+                color: "blue"
+              },
+              {
+                key: '2',
+                values: this.serverDataL2,
+                color: "green"
+              },
+              {
+                key: '3',
+                values: this.serverDataL3,
+                color:'orange'
+              },
+              {
+                key: '4',
+                values: this.serverDataL4,
+                color:'red'
+              }
+            ]
+          })
+        })
+      })
+    })
+}
+
+getRightData(event){
+  let p = new Promise((resolve, reject) => {
+    this.http.post('http://popsimbackend2.us-west-2.elasticbeanstalk.com/',
     {
       "p": (<HTMLInputElement>document.getElementById('RAlleFreq')).value,
-    //  "q": 1 - document.getElementById('RAlleFreq').value,
       "numGens": (<HTMLInputElement>document.getElementById('RGenNum')).value,
       "popSize": (<HTMLInputElement>document.getElementById('RpopSize')).value,
       "fitA1": (<HTMLInputElement>document.getElementById('RfitAA')).value,
@@ -427,36 +406,123 @@ console.log(data);
       "fitA3": (<HTMLInputElement>document.getElementById('Rfitaa')).value,
       "mutAa": 0,
       "mutaA": 0
+    }
+    ).toPromise()
+    .then(
+      res => {
+        this.serverDataR1 = Object(res)["data"];
+        Object(Object(this.optionsR)["chart"])["xDomain"] = [0, Object(res)["data"].length.toString()];
+        resolve();
       }
-    ).subscribe(data => {
-    
-    this.serverDataR4 = data;
-    console.log(data);
-    });
-    
-      this.dataR = [
-        {
-          key : '1',
-          values: this.serverDataR1,
-          color: "blue"
-        },
-        {
-          key: '2',
-          values: this.serverDataR2,
-          color: "green"
-        },
-        {
-          key: '3',
-          values: this.serverDataR3,
-          color:'orange'
-        },
-        {
-          key: '4',
-          values: this.serverDataR4,
-          color:'red'
+    )
+    return p;
+  })
+
+  p.then(() => {
+    let p2 = new Promise((resolve, reject) => {
+      this.http.post('http://popsimbackend2.us-west-2.elasticbeanstalk.com/',
+      {
+        "p": (<HTMLInputElement>document.getElementById('RAlleFreq')).value,
+        "numGens": (<HTMLInputElement>document.getElementById('RGenNum')).value,
+        "popSize": (<HTMLInputElement>document.getElementById('RpopSize')).value,
+        "fitA1": (<HTMLInputElement>document.getElementById('RfitAA')).value,
+        "fitA2": (<HTMLInputElement>document.getElementById('RfitAa')).value,
+        "fitA3": (<HTMLInputElement>document.getElementById('Rfitaa')).value,
+        "mutAa": 0,
+        "mutaA": 0
+      }
+      ).toPromise()
+      .then(
+        res => {
+          this.serverDataR2 = Object(res)["data"];
+          resolve();
         }
-      ]
-  }
+      )
+      return p2;
+    })
+
+    p2.then(() => {
+      let p3 = new Promise((resolve, reject) => {
+        this.http.post('http://popsimbackend2.us-west-2.elasticbeanstalk.com/',
+        {
+          "p": (<HTMLInputElement>document.getElementById('RAlleFreq')).value,
+          "numGens": (<HTMLInputElement>document.getElementById('RGenNum')).value,
+          "popSize": (<HTMLInputElement>document.getElementById('RpopSize')).value,
+          "fitA1": (<HTMLInputElement>document.getElementById('RfitAA')).value,
+          "fitA2": (<HTMLInputElement>document.getElementById('RfitAa')).value,
+          "fitA3": (<HTMLInputElement>document.getElementById('Rfitaa')).value,
+          "mutAa": 0,
+          "mutaA": 0
+        }
+        ).toPromise()
+        .then(
+          res => {
+            this.serverDataR3 = Object(res)["data"];
+            resolve();
+          }
+        )
+        return p3;
+      })
+
+      p3.then(() => {
+        let p4 = new Promise((resolve, reject) => {
+          this.http.post('http://popsimbackend2.us-west-2.elasticbeanstalk.com/',
+          {
+            "p": (<HTMLInputElement>document.getElementById('RAlleFreq')).value,
+            "numGens": (<HTMLInputElement>document.getElementById('RGenNum')).value,
+            "popSize": (<HTMLInputElement>document.getElementById('RpopSize')).value,
+            "fitA1": (<HTMLInputElement>document.getElementById('RfitAA')).value,
+            "fitA2": (<HTMLInputElement>document.getElementById('RfitAa')).value,
+            "fitA3": (<HTMLInputElement>document.getElementById('Rfitaa')).value,
+            "mutAa": 0,
+            "mutaA": 0
+          }
+          ).toPromise()
+          .then(
+            res => {
+              this.serverDataR4 = Object(res)["data"];
+              resolve();
+            }
+          )
+          return p4;
+        })
+
+        p4.then(() => {
+          if (this.PrevRGenLength != this.serverDataR1.length) {
+            this.optionsR.chart.duration = 0;
+            this.optionsR.chart.xDomain = [0, this.serverDataR1.length.toString()];
+            this.PrevRGenLength = this.serverDataR1.length;
+          }
+          else {
+            this.optionsR.chart.duration = 500;
+          }
+          this.dataR = [
+            {
+              key : '1',
+              values: this.serverDataR1,
+              color: "blue"
+            },
+            {
+              key: '2',
+              values: this.serverDataR2,
+              color: "green"
+            },
+            {
+              key: '3',
+              values: this.serverDataR3,
+              color:'orange'
+            },
+            {
+              key: '4',
+              values: this.serverDataR4,
+              color:'red'
+            }
+          ]
+        })
+      })
+    })
+  })
+}
 
 
   ngOnInit() {
@@ -491,10 +557,11 @@ console.log(data);
             return d3.format('.1f')(d);
           }
         },
-        yDomain: [0, 1.1]
+        yDomain: [0, 1.1],
+        xDomain: [0, (<HTMLInputElement>document.getElementById('LGenNum')).value]
       }
     }
-
+    
     this.optionsR = {
       chart: {
         type: 'lineChart',
@@ -523,7 +590,8 @@ console.log(data);
             return d3.format('.1f')(d);
           }
         },
-        yDomain: [0, 1.1]
+        yDomain: [0, 1.1],
+        xDomain: [0, (<HTMLInputElement>document.getElementById('RGenNum')).value]
       }
     }
     
@@ -535,17 +603,17 @@ console.log(data);
       }, 
       {
         key: '2',
-        values: this.serverDataL1 = [[0, 0]],
+        values: this.serverDataL2 = [[0, 0]],
         color:'green'
       },
       {
         key: '3',
-        values: this.serverDataL1 = [[0, 0]],
+        values: this.serverDataL3 = [[0, 0]],
         color:'orange'
       },
       {
         key: '4',
-        values: this.serverDataL1 = [[0, 0]],
+        values: this.serverDataL4 = [[0, 0]],
         color:'red'
       }
     ];
@@ -572,5 +640,7 @@ console.log(data);
         color:'red'
       }
     ];
+    this.PrevLGenLength = 100;
+    this.PrevRGenLength = 100;
   }
 }
