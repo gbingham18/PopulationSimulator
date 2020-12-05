@@ -267,7 +267,7 @@ export class GraphsComponent {
   getLeftData(event){
     console.log(d3);
     let p = new Promise((resolve, reject) => {
-      this.http.post('http://popsimbackend2.us-west-2.elasticbeanstalk.com/',
+      this.http.post('https://popsimbackend2.us-west-2.elasticbeanstalk.com/',
       {
         "p": (<HTMLInputElement>document.getElementById('LAlleFreq')).value,
         "numGens": (<HTMLInputElement>document.getElementById('LGenNum')).value,
@@ -290,7 +290,7 @@ export class GraphsComponent {
 
     p.then(() => {
       let p2 = new Promise((resolve, reject) => {
-        this.http.post('http://popsimbackend2.us-west-2.elasticbeanstalk.com/',
+        this.http.post('https://popsimbackend2.us-west-2.elasticbeanstalk.com/',
         {
           "p": (<HTMLInputElement>document.getElementById('LAlleFreq')).value,
           "numGens": (<HTMLInputElement>document.getElementById('LGenNum')).value,
@@ -313,7 +313,7 @@ export class GraphsComponent {
 
       p2.then(() => {
         let p3 = new Promise((resolve, reject) => {
-          this.http.post('http://popsimbackend2.us-west-2.elasticbeanstalk.com/',
+          this.http.post('https://popsimbackend2.us-west-2.elasticbeanstalk.com/',
           {
             "p": (<HTMLInputElement>document.getElementById('LAlleFreq')).value,
             "numGens": (<HTMLInputElement>document.getElementById('LGenNum')).value,
@@ -336,7 +336,7 @@ export class GraphsComponent {
 
         p3.then(() => {
           let p4 = new Promise((resolve, reject) => {
-            this.http.post('http://popsimbackend2.us-west-2.elasticbeanstalk.com/',
+            this.http.post('https://popsimbackend2.us-west-2.elasticbeanstalk.com/',
             {
               "p": (<HTMLInputElement>document.getElementById('LAlleFreq')).value,
               "numGens": (<HTMLInputElement>document.getElementById('LGenNum')).value,
@@ -396,7 +396,7 @@ export class GraphsComponent {
 
 getRightData(event){
   let p = new Promise((resolve, reject) => {
-    this.http.post('http://popsimbackend2.us-west-2.elasticbeanstalk.com/',
+    this.http.post('https://popsimbackend2.us-west-2.elasticbeanstalk.com/',
     {
       "p": (<HTMLInputElement>document.getElementById('RAlleFreq')).value,
       "numGens": (<HTMLInputElement>document.getElementById('RGenNum')).value,
@@ -420,7 +420,7 @@ getRightData(event){
 
   p.then(() => {
     let p2 = new Promise((resolve, reject) => {
-      this.http.post('http://popsimbackend2.us-west-2.elasticbeanstalk.com/',
+      this.http.post('https://popsimbackend2.us-west-2.elasticbeanstalk.com/',
       {
         "p": (<HTMLInputElement>document.getElementById('RAlleFreq')).value,
         "numGens": (<HTMLInputElement>document.getElementById('RGenNum')).value,
@@ -443,7 +443,7 @@ getRightData(event){
 
     p2.then(() => {
       let p3 = new Promise((resolve, reject) => {
-        this.http.post('http://popsimbackend2.us-west-2.elasticbeanstalk.com/',
+        this.http.post('https://popsimbackend2.us-west-2.elasticbeanstalk.com/',
         {
           "p": (<HTMLInputElement>document.getElementById('RAlleFreq')).value,
           "numGens": (<HTMLInputElement>document.getElementById('RGenNum')).value,
@@ -466,7 +466,7 @@ getRightData(event){
 
       p3.then(() => {
         let p4 = new Promise((resolve, reject) => {
-          this.http.post('http://popsimbackend2.us-west-2.elasticbeanstalk.com/',
+          this.http.post('https://popsimbackend2.us-west-2.elasticbeanstalk.com/',
           {
             "p": (<HTMLInputElement>document.getElementById('RAlleFreq')).value,
             "numGens": (<HTMLInputElement>document.getElementById('RGenNum')).value,
